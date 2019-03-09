@@ -5,23 +5,19 @@ $("#play").on("click", function(){
     
     // Set up play/ pause / resume function
     var isPlaying = responsiveVoice.isPlaying()
-    var status = $("#play").attr("data-status")
     console.log(isPlaying, status)
     
     if(!isPlaying) {
-        responsiveVoice.cancel();
         responsiveVoice.speak(text);
-        $("#play").attr("data-status", "started").removeClass("fa-play-circle").addClass("fa-pause-circle");
-    } else if (isPlaying && status == "started"){
-        responsiveVoice.pause();
-        $("#play").attr("data-status", "paused").removeClass("fa-pause-circle").addClass("fa-play-circle");
-    } else if (isPlaying && status == "paused"){
+    } else {
         responsiveVoice.resume();
-        $("#play").attr("data-status", "started").removeClass("fa-play-circle").addClass("fa-pause-circle");
-
     }
 });
 
+// Pause button
+$("#pause").on("click", function(){
+    responsiveVoice.pause();
+});
 // Stop button
 $("#stop").on("click", function(){
     $("#play").attr("data-status", "").removeClass("fa-pause-circle").addClass("fa-play-circle");

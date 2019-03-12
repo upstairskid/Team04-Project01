@@ -1,6 +1,22 @@
+window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('image');  // $('img')[0]
+          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+      }
+  });
+});
+
+
+
+
 // function to convert image to base64 encoding
 function encodeImageFileAsURL(element) {
-    var file = element.files[0];
+   
+  var file = element.files[0];
+  var src = URL.createObjectURL(file)
+  $("#image").attr("src", src);
+
     var reader = new FileReader();
     reader.onloadend = function() {
     console.log('RESULT', reader.result)
@@ -34,23 +50,13 @@ function visionAJAX(img){
         data: dataToSend,
         success: function (response) {
             console.log(response);
-            var getLabel = response.responses[0].webDetection.bestGuessLabels[0].label;
-            var label = getLabel.toProperCase();
+            var label = response.responses[0].webDetection.webEntities[0].description;
             $("#label").empty();
             $("#label").text(label);
-            console.log(getLabel, label);
+            console.log(label);
             callWikiAPI();
         },
     });
  
 };
 
-String.prototype.toProperCase = function() {
-  var words = this.split(' ');
-  var results = [];
-  for (var i=0; i < words.length; i++) {
-      var letter = words[i].charAt(0).toUpperCase();
-      results.push(letter + words[i].slice(1).toLowerCase());
-  }
-  return results.join(' ');
-};

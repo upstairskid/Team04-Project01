@@ -34,7 +34,23 @@ function visionAJAX(img){
         data: dataToSend,
         success: function (response) {
             console.log(response);
+            var getLabel = response.responses[0].webDetection.bestGuessLabels[0].label;
+            var label = getLabel.toProperCase();
+            $("#label").empty();
+            $("#label").text(label);
+            console.log(getLabel, label);
+            callWikiAPI();
         },
     });
  
+};
+
+String.prototype.toProperCase = function() {
+  var words = this.split(' ');
+  var results = [];
+  for (var i=0; i < words.length; i++) {
+      var letter = words[i].charAt(0).toUpperCase();
+      results.push(letter + words[i].slice(1).toLowerCase());
+  }
+  return results.join(' ');
 };

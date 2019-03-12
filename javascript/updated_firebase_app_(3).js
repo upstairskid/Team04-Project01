@@ -1,15 +1,15 @@
 // Initialize Firebase
+var firebase = require('firebase');
+firebase.intializeApp({
+  apiKey: "AIzaSyCmSL8YwL-UB8DvE-VErXPvVjLg0TNAGrY",
+  authDomain: "project01-team04.firebaseapp.com",
+  databaseURL: "https://project01-team04.firebaseio.com",
+  projectId: "project01-team04",
+  storageBucket: "project01-team04.appspot.com",
+  messagingSenderId: "845517864456"
+});
 
- var config = {
-    apiKey: "AIzaSyCmSL8YwL-UB8DvE-VErXPvVjLg0TNAGrY",
-    authDomain: "project01-team04.firebaseapp.com",
-    databaseURL: "https://project01-team04.firebaseio.com",
-    projectId: "project01-team04",
-    storageBucket: "project01-team04.appspot.com",
-    messagingSenderId: "845517864456"
-  };
-
-  firebase.initializeApp(config);
+//firebase.initializeApp(config);
 
   // Variable to reference Firebase
   var database = firebase.database();

@@ -45,7 +45,9 @@ connectedRef.on("value", function(snap) {
 // Moving on to storing the data that our users will be retrieving.
 // Variables need to be created first to reference these "objects of data"
 
-var textObject = [{"Title": "Description"}];
+var history = [];
+var title = $("#title").text();
+var description = $("#info").text();
 
 // LOCAL STORAGE Grab the values and Store in local storage now
 $("body").on('DOMSubtreeModified', "#info", function() {

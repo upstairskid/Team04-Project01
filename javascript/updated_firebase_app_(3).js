@@ -45,32 +45,47 @@ connectedRef.on("value", function(snap) {
 // Moving on to storing the data that our users will be retrieving.
 // Variables need to be created first to reference these "objects of data"
 
-var textObject = [{"Title": "Description"}];
+var username = "";
+var title = "";
+var description = "";
+// The above (connectionsRef and connectedRef) just store the numbers but I need it to store the name.
+
+// FIREBASE Capture text insertion event and store as variables
+$("body").on('DOMSubtreeModified', "#username", function() {
+    
+    username = $("#username").val().trim();
+    console.log(username);
+
+//Set it in the firebase database
+database.ref("/username").set({
+    username: username,
+})
+});
 
 // LOCAL STORAGE Grab the values and Store in local storage now
 $("body").on('DOMSubtreeModified', "#info", function() {
     
-    textObject = $("#info").val().trim();
-    
-    console.log(textObject);
+    //username = $("#username").val().trim();
+    title = $("#title").val().trim();
+    descritpion = $("#description").val().trim();
+    console.log(username);
+    console.log(title);
+    console.log(description);
 
     localStorage.clear();
 
-    localStorage.setItem("Description", textObject);
+    localStorage.setItem("username", username);
+    localStorage.setItem("title", title);
+    localStorage.setItem("description", description);
+
+    //Add username to the search history section div for "username"
+    $("#username-search").text(localStorage.getItem("username"));
+
+    // We need to get the description to add dynamically without overwriting what was previously there
+    $("#title-search").text(localStorage.getItem("title"));
+    $("#description-search").text(localStorage.getItem("description"));
 });
-
-$("#trainTable").text(localStorage.getItem("Description"));
-
-//click-counter for firebase
-$("body").on('DOMSubtreeModified', "#info", function() {
-    clickCounter++;
-
-    database.ref("/clickvalues").set({
-    clickCount: clickCounter
-    });
-})
-
-/* This code to store in firebase is not useful since we need the history to be associated
+/* This code to store in firebase is not useful since we need the hsitory ti be asspciated
 with the user; which we can only do with local storage
 
 //Now we need to get it added to the search section history
@@ -91,3 +106,10 @@ database.ref("/username").on("value", function(snapshot) {
   });*/
     
 // Now for the click-counter value to count the number of times the API is accessed
+$("body").on('DOMSubtreeModified', "#history", function() {
+    clickCounter++;
+
+    database.ref("/clickvalues").set({
+      clickCount: clickCounter
+    });
+})

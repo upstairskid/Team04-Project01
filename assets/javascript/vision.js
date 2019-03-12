@@ -1,6 +1,22 @@
+window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('image');  // $('img')[0]
+          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+      }
+  });
+});
+
+
+
+
 // function to convert image to base64 encoding
 function encodeImageFileAsURL(element) {
-    var file = element.files[0];
+   
+  var file = element.files[0];
+  var src = URL.createObjectURL(file)
+  $("#image").attr("src", src);
+
     var reader = new FileReader();
     reader.onloadend = function() {
     console.log('RESULT', reader.result)

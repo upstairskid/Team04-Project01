@@ -107,3 +107,7 @@ label.myLabel input[type="file"] {
     border:  solid  #f7b633;
 
 }
+
+.imageCard {
+    border: solid #f7b633;
+}

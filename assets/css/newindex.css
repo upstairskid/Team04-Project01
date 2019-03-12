@@ -159,11 +159,16 @@ p{
 }
 
 hr#page{
-    border-top:10px dashed #f7b633;
+    border-top:10px #f7b633;
 }
 
 /* firebase info */
 
 .container_firebase{
     position: relative;
+}
+
+/* image card */
+#display .imageCard {
+    border: #f7b633;
 }

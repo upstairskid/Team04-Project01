@@ -1,5 +1,6 @@
 // Initialize Firebase
 // Initialize Firebase
+
 var config = {
   apiKey: "AIzaSyCmSL8YwL-UB8DvE-VErXPvVjLg0TNAGrY",
   authDomain: "project01-team04.firebaseapp.com",
@@ -9,8 +10,7 @@ var config = {
   messagingSenderId: "845517864456"
 };
 
-var app = firebase.initializeApp(config, "myapp");
-app.auth().useDeviceLanguage();
+firebase.initializeApp(config);
 
   // Variable to reference Firebase
   var database = firebase.database();
@@ -52,9 +52,9 @@ var description = "";
 // The above (connectionsRef and connectedRef) just store the numbers but I need it to store the name.
 
 // FIREBASE Capture text insertion event and store as variables
-$("body").on('DOMSubtreeModified', "#username", function() {
+$("body").on('DOMSubtreeModified', "#trainTable", function() {
     
-    username = $("#username").val().trim();
+    username = $("#trainTable").val().trim();
     console.log(username);
 
 //Set it in the firebase database
@@ -67,8 +67,8 @@ database.ref("/username").set({
 $("body").on('DOMSubtreeModified', "#info", function() {
     
     //username = $("#username").val().trim();
-    title = $("#title").val().trim();
-    descritpion = $("#description").val().trim();
+    title = $("#label").val().trim();
+    descritpion = $("#info").val().trim();
     console.log(username);
     console.log(title);
     console.log(description);
@@ -80,11 +80,11 @@ $("body").on('DOMSubtreeModified', "#info", function() {
     localStorage.setItem("description", description);
 
     //Add username to the search history section div for "username"
-    $("#username-search").text(localStorage.getItem("username"));
+    $("#trainTable").text(localStorage.getItem("username"));
 
     // We need to get the description to add dynamically without overwriting what was previously there
-    $("#title-search").text(localStorage.getItem("title"));
-    $("#description-search").text(localStorage.getItem("description"));
+    $("#trainTable").text(localStorage.getItem("title"));
+    $("#trainTable").text(localStorage.getItem("description"));
 });
 /* This code to store in firebase is not useful since we need the hsitory ti be asspciated
 with the user; which we can only do with local storage
@@ -107,10 +107,10 @@ database.ref("/username").on("value", function(snapshot) {
   });*/
     
 // Now for the click-counter value to count the number of times the API is accessed
-$("body").on('DOMSubtreeModified', "#history", function() {
+$("body").on('DOMSubtreeModified', "#info", function() {
     clickCounter++;
 
     database.ref("/clickvalues").set({
       clickCount: clickCounter
     });
-})
+});

@@ -1,11 +1,13 @@
 //Click to play/ pause / resume play text in "#test"
 $("#play").on("click", function(){
     // need to change this to appropriate field on html
-    var text = $("#test").text(); 
+    var text = $("#info").text().trim(); 
+
+    console.log(text)
     
     // Set up play/ pause / resume function
-    var isPlaying = responsiveVoice.isPlaying()
-    console.log(isPlaying, status)
+    var isPlaying = responsiveVoice.isPlaying();
+    console.log(isPlaying)
     
     if(!isPlaying) {
         responsiveVoice.speak(text);

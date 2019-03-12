@@ -1,0 +1,109 @@
+body{
+    margin:0;
+    background-color:#5893d4;
+}
+
+.footer{
+    background-color: #1f3c88;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 3px;
+}
+
+/* navbar */
+.userIcon{
+    color: white;
+}
+.navbar-brand{
+    font-family:'Pacifico', cursive;
+    color: white;
+    font-size: 2rem;
+
+}
+
+.navbar{
+    background-color: #1f3c88;
+    color: white;
+}
+
+/* dropdown */
+hr{
+    border-top:2px solid #ffc107;
+    margin: 0;
+}
+
+.dropdown-menu{
+    right: 0;
+    left: auto;
+}
+
+.dropdown-toggle::after{
+    content: none;
+}
+
+.dropdown-item{
+    color: #1f3c88; 
+
+}
+
+.dropdown-item:hover{
+    background-color: #f7b633;
+    color: white;
+}
+
+/* Upload display */
+.upload{
+    border: 5px dashed #f7b633;
+    height: 290px;
+    background-color: #f3f8ff;
+}
+
+/* INFO response display */
+#info{
+    overflow-y: scroll;
+    height: 290px;
+}
+
+
+.card.infoCard{
+    border-color: #f7b633;
+}
+
+.card .infoHeader {
+    border-color: #f7b633;
+    background-color: #1f3c88;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.infoCard .infoFooter {
+    border-color: #f7b633;
+    background-color:white;
+    color: #f7b633;
+    font-size: 1.5rem;
+}
+
+/***** myLabel styling *****/
+label.myLabel input[type="file"] {
+    position:absolute;
+    top: -1000px;
+}
+
+.myLabel {
+    border:  solid  #1f3c88;
+    border-radius: 4px;
+    padding: 5px 5px;
+    margin: 2px;
+    background: #1f3c88;
+    display: inline-block;
+    color: white
+}
+.myLabel:hover {
+    background: #f7b633;
+    border:  solid  #f7b633;
+
+}

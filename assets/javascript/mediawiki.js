@@ -1,7 +1,7 @@
 function callWikiAPI (){
     //grab search query string from image search result
-    var searchWiki; // need to grab this from somwhere on html or need to return from Google Vision JSON Call
-    console.log(search)
+    var searchWiki = $("#label").text().trim().split(" ").join("+");
+    console.log(searchWiki)
     
     
     // query currently hardcoded for Mona Lisa
@@ -13,11 +13,12 @@ function callWikiAPI (){
     })
     .then(function(response) {
         console.log(response)
-        var pages = response.query.pages
-        var pagesArray = Object.values(pages)
-        var extract = pagesArray[0].extract // this is the extract to be used to populate the page
-        console.log(extract)
-
+        var pages = response.query.pages;
+        var pagesArray = Object.values(pages);
+        var extract = pagesArray[0].extract; // this is the extract to be used to populate the page
+        console.log(extract);
+        $("#info").empty();
+        $("#info").text(extract);
         // Enters code for populating page on screen
 
 

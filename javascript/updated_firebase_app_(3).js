@@ -114,3 +114,12 @@ $("body").on('DOMSubtreeModified', "#info", function() {
       clickCounter
     );
 });
+    //Firebase watcher + initial loader HINT: .on("value")
+    database.ref("/clickvalues").on("value", function(snapshot) {
+
+    // Log everything that's coming out of snapshot
+    console.log(snapshot.val().clickCounter);
+
+    // Change the HTML to reflect
+    $("#counter").text(snapshot.val().username);
+    });

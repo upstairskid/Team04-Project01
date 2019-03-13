@@ -37,30 +37,26 @@ function loadScript(path, callback) {
 }
 
 function speech(){
-    loadScript("./assets/javascript/text_to_speech.js");
+    loadScript("assets/javascript/text_to_speech.js");
 }
 
 function firebase(){
-    loadScript("./assets/javascript/updated_firebase_app.js", speech);
+    loadScript("assets/javascript/updated_firebase_app.js", speech);
 }
 
 function mediawiki(){
-    loadScript("./assets/javascript/mediawiki.js", firebase);
+    loadScript("assets/javascript/mediawiki.js", firebase);
 }
 
 function vision(){
-    loadScript("./assets/javascript/vision.js", mediawiki);
+    loadScript("assets/javascript/vision.js", mediawiki);
 }
-
-function upload(){
-    loadScript("./assets/javascript/upload.js", vision);
-}
-
 
 // load global dependencies
 function loadGlobalDependencies(){
     // load jquery
-    loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',upload);
+    loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', vision);
+  
 
 }
 

@@ -26,3 +26,7 @@ $("#stop").on("click", function(){
     responsiveVoice.cancel();
 });
 
+$("#info").on('change', function() {
+    console.log("contact has changed")
+    responsiveVoice.cancel();
+  });

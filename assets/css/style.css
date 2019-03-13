@@ -1,5 +1,6 @@
-body{
-    margin:0;
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+body {
     background-color:#5893d4;
 }
 
@@ -10,7 +11,7 @@ body{
     bottom: 0;
     width: 100%;
     text-align: center;
-    padding: 3px;
+    padding: 3px 0px;
 }
 
 /* navbar */
@@ -57,16 +58,17 @@ hr{
 /* Upload display */
 .upload{
     border: 5px dashed #f7b633;
-    height: 290px;
     background-color: #f3f8ff;
 }
 
 /* INFO response display */
 #info{
-    overflow-y: scroll;
     height: 290px;
 }
 
+#infoBody{
+    overflow: auto;
+}
 
 .card.infoCard{
     border-color: #f7b633;
@@ -93,13 +95,13 @@ label.myLabel input[type="file"] {
     top: -1000px;
 }
 
-.myLabel {
+.myLabel {    
     border:  solid  #1f3c88;
     border-radius: 4px;
     padding: 5px 5px;
-    margin: 2px;
     background: #1f3c88;
-    display: inline-block;
+    float: left;
+    width: 100%;
     color: white
 }
 .myLabel:hover {

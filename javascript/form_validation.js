@@ -72,26 +72,49 @@ var t = false
         }
         else{
             inputFieldConfirm1 = false;
-            alert("Invalid Entry");
+            $("#label").text("Invalid Entry");
             console.log("Invalid Entry");
         }
     }
     var onInputChange2 = function(event){
         var text = event.target.value();
         if(text > 0){
-            inputField1 = text;
+            inputField2 = text;
             inputFieldConfirm2 = true;
         }else{
             inputFieldConfirm2 = false;
-            alert("Invalid Entry");
+            $("#info").text("Invalid Entry");
             console.log("Invalid Entry")
         }
     }
 
     //Code for validating a 404 Error
+    /*fetch blocked by CORS
+    fetch("https://en.wikipedia.org/w/api.php")
+    .then(function(response) {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    }).then(function(response) {
+        console.log("ok");
+    }).catch(function(error) {
+        console.log(error);
+        $("#info").text("Invalid Request");
+    });*/
 
-    
-    /*Not needed since we are noit submitting anything
+var url = "https://en.wikipedia.org/w/api.php";
+function UrlExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    if (http.status = 400) {
+    $("#info").text("Invalid Request");
+    }
+    else
+        console.log("ok");
+}   
+    /*Not needed since we are not submitting anything
     var onSubmit = function(){
         // validating all inputs are inputted
         if(inputFieldConfirm1 && inputFieldConfirm2 && inputFieldConfirm3){

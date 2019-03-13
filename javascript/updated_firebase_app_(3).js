@@ -16,7 +16,9 @@ firebase.initializeApp(config);
   var database = firebase.database();
 
   //Variable for clickcounter
-  var clickCounter = 0
+  var clickCounter = 0;
+
+  //var clicks ="";
 //______________________________________________________________________________________
 // If we move forward with authentication, this is the section of code to implement it
 // From the sign-up page grab the user's email and password and store the UID
@@ -110,16 +112,21 @@ database.ref("/username").on("value", function(snapshot) {
 $("body").on('DOMSubtreeModified', "#info", function() {
     clickCounter++;
 
-    database.ref("/clickvalues").set(
-      clickCounter
-    );
+    database.ref("/clickvalues").set({
+      clickCount: clickCounter
+    });
 });
     //Firebase watcher + initial loader HINT: .on("value")
     database.ref("/clickvalues").on("value", function(snapshot) {
+       
+        console.log(snapshot.val());
+      //if (snapshot.child("clickCounter").exists()) {
 
-    // Log everything that's coming out of snapshot
-    console.log(snapshot.val().clickCounter);
+         clickCounter = snapshot.val().clickCount;
 
-    // Change the HTML to reflect
-    $("#counter").text(snapshot.val().clickCounter);
-    });
+          // Log everything that's coming out of snapshot
+          console.log(snapshot.val().clickCount);
+
+          // Change the HTML to reflect
+          $("#counter").text(snapshot.val().clickCount);
+      });

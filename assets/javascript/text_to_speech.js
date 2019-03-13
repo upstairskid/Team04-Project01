@@ -3,7 +3,7 @@ $("#play").on("click", function(){
     // need to change this to appropriate field on html
     var text = $("#info").text().trim(); 
 
-    console.log(text)
+    console.log("text2speech: " + text)
     
     // Set up play/ pause / resume function
     var isPlaying = responsiveVoice.isPlaying();
@@ -26,7 +26,3 @@ $("#stop").on("click", function(){
     responsiveVoice.cancel();
 });
 
-$("#info").on('change', function() {
-    console.log("contact has changed")
-    responsiveVoice.cancel();
-  });

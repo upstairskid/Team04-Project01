@@ -19,7 +19,6 @@ function callWikiAPI (){
 
         
         // Enters code for populating page on screen
-        $("#info").empty();
         $("#info").text(extract);
         
         //Save user History to localStorage

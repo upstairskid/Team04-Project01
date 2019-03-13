@@ -65,52 +65,9 @@ database.ref("/username").set({
 })
 });
 
-// LOCAL STORAGE Grab the values and Store in local storage now
-$("body").on('DOMSubtreeModified', "#info", function() {
-    
-    //username = $("#username").val().trim();
-    title = $("#label")[0].innerHTML.trim();
-    descritpion = $("#info")[0].innerHTML.trim();
-    console.log(username);
-    console.log(title);
-    console.log(description);
-
-    // localStorage.clear();
-
-    // localStorage.setItem("username", username);
-    // localStorage.setItem("title", title);
-    // localStorage.setItem("description", description);
-
-    //Add username to the search history section div for "username"
-    $("#trainTable").text(localStorage.getItem("username"));
-
-    // We need to get the description to add dynamically without overwriting what was previously there
-    $("#trainTable").text(localStorage.getItem("title"));
-    $("#trainTable").text(localStorage.getItem("description"));
-});
-/* This code to store in firebase is not useful since we need the hsitory ti be asspciated
-with the user; which we can only do with local storage
-
-//Now we need to get it added to the search section history
-    
-// Firebase watcher + initial loader HINT: .on("value")
-database.ref("/username").on("value", function(snapshot) {
-
-    // Log everything that's coming out of snapshot
-    console.log(snapshot.val().username);
-   
-    // Change the HTML to reflect
-    $("#username-history-div").text(snapshot.val().username);
-    
-    },
-    // Handle the errors
-   function(errorObject) {
-    console.log("Errors handled: " + errorObject.code);
-  });*/
-    
 // Now for the click-counter value to count the number of times the API is accessed
-$("body").on('DOMSubtreeModified', "#info", function() {
-    clickCounter++;
+$("body").on('DOMSubtreeModified', "#label", function() {
+    clickCounter = clickCounter + 0.5;
 
     database.ref("/clickvalues").set({
       clickCount: clickCounter

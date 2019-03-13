@@ -121,5 +121,5 @@ $("body").on('DOMSubtreeModified', "#info", function() {
     console.log(snapshot.val().clickCounter);
 
     // Change the HTML to reflect
-    $("#counter").text(snapshot.val().username);
+    $("#counter").text(snapshot.val().clickCounter);
     });

@@ -1,5 +1,4 @@
 body{
-    margin:0;
     background-color:#5893d4;
 }
 
@@ -57,16 +56,17 @@ hr{
 /* Upload display */
 .upload{
     border: 5px dashed #f7b633;
-    height: 290px;
     background-color: #f3f8ff;
 }
 
 /* INFO response display */
 #info{
-    overflow-y: scroll;
     height: 290px;
 }
 
+#infoBody{
+    overflow: auto;
+}
 
 .card.infoCard{
     border-color: #f7b633;

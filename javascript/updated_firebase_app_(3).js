@@ -122,10 +122,7 @@ $("body").on('DOMSubtreeModified', "#info", function() {
         console.log(snapshot.val());
       //if (snapshot.child("clickCounter").exists()) {
 
-         clickCounter = snapshot.val().clickCount;
-
-          // Log everything that's coming out of snapshot
-          console.log(snapshot.val().clickCount);
+        clickCounter = snapshot.val().clickCount;
 
           // Change the HTML to reflect
           $("#counter").text(snapshot.val().clickCount);

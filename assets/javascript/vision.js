@@ -1,32 +1,55 @@
-window.addEventListener('load', function() {
-  document.querySelector('input[type="file"]').addEventListener('change', function() {
-      if (this.files && this.files[0]) {
-          var img = document.querySelector('image');  // $('img')[0]
-          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+
+  var input = document.getElementById("selectedImage");
+  
+  input.addEventListener("change", handleFiles);
+  
+  function handleFiles(e) {
+    responsiveVoice.cancel();
+
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext("2d");
+      var reader = new FileReader;
+      reader.onload = function (event) {
+          var img = new Image();
+          img.src = reader.result;
+          img.onload = function () {
+              var maxWidth = 500,
+                  maxHeight = 500,
+                  imageWidth = img.width,
+                  imageHeight = img.height;
+  
+              if (imageWidth > imageHeight) {
+                  if (imageWidth > maxWidth) {
+                      imageHeight *= maxWidth / imageWidth;
+                      imageWidth = maxWidth;
+                  }
+              } else {
+                  if (imageHeight > maxHeight) {
+                      imageWidth *= maxHeight / imageHeight;
+                      imageHeight = maxHeight;
+                  }
+              }
+              canvas.width = imageWidth;
+              canvas.height = imageHeight;
+  
+              ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+  
+              // The resized file ready for upload
+              var encodedImg = canvas.toDataURL("image/jpeg");
+              var queryImg = encodedImg.split("data:image/jpeg;base64,").pop();
+              console.log(encodedImg)
+  
+              visionAJAX(queryImg);
+  
+              var display = document.querySelector('#image');
+              display.src = encodedImg;
+  
+              };
+          }        
+      reader.readAsDataURL(e.target.files[0]);
       }
-  });
-});
-
-
-
-
-// function to convert image to base64 encoding
-function encodeImageFileAsURL(element) {
-   
-  var file = element.files[0];
-  var src = URL.createObjectURL(file)
-  $("#image").attr("src", src);
-
-    var reader = new FileReader();
-    reader.onloadend = function() {
-    console.log('RESULT', reader.result)
-    var encodedImg =  reader.result;
-    var queryImg = encodedImg.split("data:image/jpeg;base64,").pop();
-    visionAJAX(queryImg);
-    }
-    reader.readAsDataURL(file);
-}
-
+  
+  
 function visionAJAX(img){
     var dataToSend = JSON.stringify({
         requests: [

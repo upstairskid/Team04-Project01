@@ -13,7 +13,7 @@ var t = false
     // title section (we will restrict offensive words)
     var inputField2 = $("#info");
 
-    // descritption section (encode for error 404 if the results do not return anything)
+    // descritption section (encode for error 400 if the results do not return anything)
     var inputField3 = $("info");
     
     var inputFieldConfirm1 = false;

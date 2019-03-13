@@ -40,12 +40,8 @@ function speech(){
     loadScript("assets/javascript/text_to_speech.js");
 }
 
-function firebase(){
-    loadScript("assets/javascript/updated_firebase_app.js", speech);
-}
-
 function mediawiki(){
-    loadScript("assets/javascript/mediawiki.js", firebase);
+    loadScript("assets/javascript/mediawiki.js", speech);
 }
 
 function vision(){
@@ -53,14 +49,13 @@ function vision(){
 }
 
 // load global dependencies
-function loadGlobalDependencies(){
+function jQuery(){
     // load jquery
     loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', vision);
-  
 
 }
 
 
-window.addEventListener("load",loadGlobalDependencies);
+window.addEventListener("load", jQuery);
 
 

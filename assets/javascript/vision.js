@@ -74,7 +74,6 @@ function visionAJAX(img){
         success: function (response) {
             console.log(response);
             var label = response.responses[0].webDetection.webEntities[0].description;
-            $("#label").empty();
             $("#label").text(label);
             console.log(label);
             callWikiAPI();

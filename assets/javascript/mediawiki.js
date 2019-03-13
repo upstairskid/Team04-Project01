@@ -30,14 +30,18 @@ function callWikiAPI (){
         }        
         var save = {
             "title": searchWiki,
-            "desription": extract
+            "description": extract
         }
 
         history.push(save);
 
         var historyStr = JSON.stringify(history);
         localStorage.setItem("history", historyStr);
+
         
     });
 
 }
+
+
+

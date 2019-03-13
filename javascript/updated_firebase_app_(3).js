@@ -67,17 +67,17 @@ database.ref("/username").set({
 $("body").on('DOMSubtreeModified', "#info", function() {
     
     //username = $("#username").val().trim();
-    title = $("#label").val().trim();
-    descritpion = $("#info").val().trim();
+    title = $("#label")[0].innerHTML.trim();
+    descritpion = $("#info")[0].innerHTML.trim();
     console.log(username);
     console.log(title);
     console.log(description);
 
-    localStorage.clear();
+    // localStorage.clear();
 
-    localStorage.setItem("username", username);
-    localStorage.setItem("title", title);
-    localStorage.setItem("description", description);
+    // localStorage.setItem("username", username);
+    // localStorage.setItem("title", title);
+    // localStorage.setItem("description", description);
 
     //Add username to the search history section div for "username"
     $("#trainTable").text(localStorage.getItem("username"));
@@ -110,7 +110,7 @@ database.ref("/username").on("value", function(snapshot) {
 $("body").on('DOMSubtreeModified', "#info", function() {
     clickCounter++;
 
-    database.ref("/clickvalues").set({
-      clickCount: clickCounter
-    });
+    database.ref("/clickvalues").set(
+      clickCounter
+    );
 });

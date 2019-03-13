@@ -16,7 +16,11 @@ function callWikiAPI (){
         var pages = response.query.pages;
         var pagesArray = Object.values(pages);
         var extract = pagesArray[0].extract; // this is the extract to be used to populate the page
-        console.log(extract);
+        // console.log(extract);
+        localStorage.clear()
+        localStorage.setItem("title", searchWiki);
+    localStorage.setItem("description", extract);
+    console.log(window.localStorage)
         $("#info").empty();
         $("#info").text(extract);
         // Enters code for populating page on screen

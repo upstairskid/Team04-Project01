@@ -16,16 +16,27 @@ function callWikiAPI (){
         var pages = response.query.pages;
         var pagesArray = Object.values(pages);
         var extract = pagesArray[0].extract; // this is the extract to be used to populate the page
-        // console.log(extract);
-        localStorage.clear()
-        localStorage.setItem("title", searchWiki);
-    localStorage.setItem("description", extract);
-    console.log(window.localStorage)
+
+        
+        // Enters code for populating page on screen
         $("#info").empty();
         $("#info").text(extract);
-        // Enters code for populating page on screen
+        
+        //Save user History to localStorage
+        var history = JSON.parse(localStorage.getItem("history"));
+        console.log(history);
+        if (history == null){
+            history = [];            
+        }        
+        var save = {
+            "title": searchWiki,
+            "desription": extract
+        }
 
+        history.push(save);
 
+        var historyStr = JSON.stringify(history);
+        localStorage.setItem("history", historyStr);
         
     });
 

@@ -40,7 +40,16 @@ function callWikiAPI (){
         
     });
 
-}
+};
+
+$(document).ready(function(){
+  $('.imageCard').hide();
+});
+$("#selectedImage").on('click',function(){
+  $('.imageCard').show();
+})
+            
+         
 
 
 

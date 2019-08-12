@@ -6,6 +6,9 @@ This is an easy to use mobile responsive application that allows for travellers 
 
 Link to Trouvé: https://kaiannfletcher.github.io/Team04-Project01/
 
+![Team04-Project01](trouve.png)
+
+
 ### Developers
 Nick Buadwal
 Sharon Chien
